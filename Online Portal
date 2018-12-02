@@ -1,0 +1,45 @@
+#include<stdio.h>
+void muyoboziportal()
+{
+    FILE *infos;
+    char ch;
+    infos = fopen("coursinfos.txt","r");
+    while((ch = fgetc(infos))!= EOF)
+    {
+        printf("%c",ch);
+    }
+
+    fclose(infos);
+}
+void studentportal()
+{
+
+}
+int main()
+{
+    char userName[20];
+    char passWord[20];
+    printf("\t=========================================\n");
+    printf("\tWELCOME TO AUCA ONLINE PORTAL\n");
+    printf("\t=========================================\n\n");
+    printf("\tEnter your user name: ");
+    scanf("%s",&userName);
+    printf("\n\tEnter your password: ");
+    scanf("%s",&passWord);
+    if (strcmp(userName, "Muyobozi") == 0 && strcmp(passWord, "muyobozipass") == 0)
+    {
+        printf("\n\tWelcome %s", userName);
+        printf("\n\tHere is The List of the courses: \n");
+        printf("CODE\t\tCOURSE DESCRIPTION\t\t\tCREDITS\n");
+        printf("=======\t\t==================\t\t\t========\n");
+        muyoboziportal();
+    }
+    else if(strcmp(userName, "Student") == 0 && strcmp(passWord, "studentpass") == 0)
+    {
+        printf("\n\tWelcome %s", userName);
+    }
+    else
+    {
+        printf("Wrong Credentials");
+    }
+}
