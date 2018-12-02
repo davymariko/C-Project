@@ -1,5 +1,92 @@
 #include<stdio.h>
+#include<conio.h>
+#include<string.h>
+int i;
+struct client
+{
+    char name[40];
+    char emailAdrr[40];
+    char userName[40];
+    char passWord[40];
+}cli[100];
+
+void signUp()
+{
+    FILE *registry;
+    registry = fopen("registrinfos.txt","a");
+    char c,checker[30];
+    int z=0;
+    printf("\n\tCreate an account to have access to the service.\n\n\t\tLet's Get Started\n");
+    for(i=0;i<100;i++)
+    {
+        printf("\n\tEnter Your Name: ");
+        scanf("%s",&cli[i].name);
+        printf("\n\tEnter Your e-mail address: ");
+        scanf("%s",&cli[i].emailAdrr);
+        printf("\n\tCreate an Username: ");
+        scanf("%s",&cli[i].userName);
+        while(!feof(registry))
+        {
+            /*fread(&n;w[i],sizeof(w[i]),1,registry);*/
+            if(strcmp(checker,cli[i].userName)==0)
+            {
+                printf("\n\n\t\t\tUSERNAME ALREDY EXISTS");
+                system("cls");
+            }
+
+          else
+          {
+            strcpy(cli[i].userName,checker);
+            break;
+          }
+        }
+        printf("\n\tCreate a Password: ");
+        scanf("%s",&cli[i].passWord);
+        main();
+    }
+    printf("\t=======================================\n");
+    printf("\t\tMUVUDUKO ONLINE CAR RENTING\n");
+    printf("\t=======================================\n\n");
+    printf("\nWelcome %s to MUVUDUKO CAR RENTAL. You can now login into your account\n\n",checker);
+    fprintf(registry,"%s\t%s\t%s\t%s\n",cli[i].name,cli[i].emailAdrr,cli[i].userName,cli[i].passWord);
+    fclose(registry);
+}
+void signIn()
+{
+
+}
+void adminAcc()
+{
+
+}
 int main()
 {
-  car car_name[40];
+    printf("\t===================================================\n");
+    printf("\t\tWELCOME TO MUVUDUKO ONLINE CAR RENTING\n");
+    printf("\t===================================================\n\n");
+    int ch;
+    do
+    {
+        printf("\tPRESS 1 TO SIGN IN\n");
+        printf("\tPRESS 2 TO SIGN UP\n");
+        printf("\tPRESS 3 FOR ADMIN ACCESS\n");
+        printf("\tPRESS ANY OTHER KEY TO EXIT THE PROGRAM\n\n");
+        printf("\tYour Choice?: ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+        case 1:
+            signIn();
+            break;
+        case 2:
+            signUp();
+            break;
+        case 3:
+            adminAcc();
+            break;
+        default:
+            printf("\nSee you Soon!");
+        }
+    } while(ch<4);
+    return 0;
 }
