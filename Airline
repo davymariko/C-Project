@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<windows.h>
+#include<conio.h>
+#include<string.h>
+struct user
+{
+	char username[50];
+	char password[50];
+}user;
+void main()
+{
+	system("cls");
+    printf("\t===================================================\n");
+    printf("\t\tWELCOME TO BOTSWANGAIR  \n");
+    printf("\t===================================================\n\n");
+    printf("\n\n\n\n\t\t\tPress Enter to Continue!!");
+    getch()
+    while(1)
+    {
+        system("cls");
+        printf("\n\n\tPRESS 1 TO BOOK A FLIGHT\n");
+        printf("\tPRESS 2 TO SEE YOUR fLIGHT\n");
+        printf("\tPRESS 3 FOR ADMIN ACCESS\n");
+        printf("\tPRESS ANY OTHER KEY TO EXIT\n\n");
+        printf("\tYour Choice?: ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+        	case 1: system("cls");
+            	bookfli();
+            	break;
+	        case 2: system("cls");
+	            seefli();
+	            break;
+	        case 3: system("cls");
+	            adminAcc();
+	            break;
+	        default: system("cls");
+	 		    printf("\n\t\t\t\xdb                            \xdb\n");
+	    		printf("\t\t\t\xdb        SEE YOU SOON!!          \xdb\n");
+	    		printf("\t\t\t\xdb                            \xdb\n");
+      	}
+        getch();
+    }
+	return 0;
+}
+createflight()
+{
+ printf("\n\n\tNew bus Wizard\n\n");
+    printf(" Destination : ");
+    scanf("%s",flight.destination);
+    printf("\n");
+    printf(" Date (dd mm yyyy) : ");
+    scanf("%d",&flight.t.day);
+    scanf("%d",&flight.t.month);
+    scanf("%d",&flight.t.year);
+    printf("\n");
+    printf(" Time (hh:mm) : ");
+    scanf("%d",&flight.t.hour);
+    scanf("%d",&flight.t.minute);
+    printf("\n");
+    printf(" cost : ");
+    scanf("%d",&flight.cost);
+    printf("\n");
+    printf(" place : ");
+    scanf("%d",&flight.place);
+    printf("\n");
+    FILE* f;
+    f = fopen("fight.txt","a");
+    flight.id = getId();
+    fprintf(f,"%d\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",flight.id,flight.destination,flight.t.day,flight.t.month,flight.t.year,flight.t.hour,flight.t.minute,flight.cost,flight.place);
+    fclose(f);
+    printf("\tBus Added");
+}
